@@ -70,99 +70,99 @@ Menubar.Add = function ( editor ) {
 
 	// Circle
 
-	var option = new UI.Row();
-	option.setClass( 'option' );
-	option.setTextContent( 'Circle' );
-	option.onClick( function () {
+	// var option = new UI.Row();
+	// option.setClass( 'option' );
+	// option.setTextContent( 'Circle' );
+	// option.onClick( function () {
 
-		var geometry = new THREE.CircleBufferGeometry( 1, 8, 0, Math.PI * 2 );
-		var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
-		mesh.name = 'Circle';
+	// 	var geometry = new THREE.CircleBufferGeometry( 1, 8, 0, Math.PI * 2 );
+	// 	var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+	// 	mesh.name = 'Circle';
 
-		editor.execute( new AddObjectCommand( mesh ) );
+	// 	editor.execute( new AddObjectCommand( mesh ) );
 
-	} );
-	options.add( option );
+	// } );
+	// options.add( option );
 
 	// Cylinder
 
-	var option = new UI.Row();
-	option.setClass( 'option' );
-	option.setTextContent( 'Cylinder' );
-	option.onClick( function () {
+	// var option = new UI.Row();
+	// option.setClass( 'option' );
+	// option.setTextContent( 'Cylinder' );
+	// option.onClick( function () {
 
-		var geometry = new THREE.CylinderBufferGeometry( 1, 1, 1, 8, 1, false, 0, Math.PI * 2 );
-		var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
-		mesh.name = 'Cylinder';
+	// 	var geometry = new THREE.CylinderBufferGeometry( 1, 1, 1, 8, 1, false, 0, Math.PI * 2 );
+	// 	var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+	// 	mesh.name = 'Cylinder';
 
-		editor.execute( new AddObjectCommand( mesh ) );
+	// 	editor.execute( new AddObjectCommand( mesh ) );
 
-	} );
-	options.add( option );
+	// } );
+	// options.add( option );
 
 	// Sphere
 
-	var option = new UI.Row();
-	option.setClass( 'option' );
-	option.setTextContent( 'Sphere' );
-	option.onClick( function () {
+	// var option = new UI.Row();
+	// option.setClass( 'option' );
+	// option.setTextContent( 'Sphere' );
+	// option.onClick( function () {
 
-		var geometry = new THREE.SphereBufferGeometry( 1, 8, 6, 0, Math.PI * 2, 0, Math.PI );
-		var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
-		mesh.name = 'Sphere';
+	// 	var geometry = new THREE.SphereBufferGeometry( 1, 8, 6, 0, Math.PI * 2, 0, Math.PI );
+	// 	var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+	// 	mesh.name = 'Sphere';
 
-		editor.execute( new AddObjectCommand( mesh ) );
+	// 	editor.execute( new AddObjectCommand( mesh ) );
 
-	} );
-	options.add( option );
+	// } );
+	// options.add( option );
 
 	// Icosahedron
 
-	var option = new UI.Row();
-	option.setClass( 'option' );
-	option.setTextContent( 'Icosahedron' );
-	option.onClick( function () {
+	// var option = new UI.Row();
+	// option.setClass( 'option' );
+	// option.setTextContent( 'Icosahedron' );
+	// option.onClick( function () {
 
-		var geometry = new THREE.IcosahedronGeometry( 1, 0 );
-		var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
-		mesh.name = 'Icosahedron';
+	// 	var geometry = new THREE.IcosahedronGeometry( 1, 0 );
+	// 	var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+	// 	mesh.name = 'Icosahedron';
 
-		editor.execute( new AddObjectCommand( mesh ) );
+	// 	editor.execute( new AddObjectCommand( mesh ) );
 
-	} );
-	options.add( option );
+	// } );
+	// options.add( option );
 
 	// Torus
 
-	var option = new UI.Row();
-	option.setClass( 'option' );
-	option.setTextContent( 'Torus' );
-	option.onClick( function () {
+	// var option = new UI.Row();
+	// option.setClass( 'option' );
+	// option.setTextContent( 'Torus' );
+	// option.onClick( function () {
 
-		var geometry = new THREE.TorusBufferGeometry( 1, 0.4, 8, 6, Math.PI * 2 );
-		var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
-		mesh.name = 'Torus';
+	// 	var geometry = new THREE.TorusBufferGeometry( 1, 0.4, 8, 6, Math.PI * 2 );
+	// 	var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+	// 	mesh.name = 'Torus';
 
-		editor.execute( new AddObjectCommand( mesh ) );
+	// 	editor.execute( new AddObjectCommand( mesh ) );
 
-	} );
-	options.add( option );
+	// } );
+	// options.add( option );
 
 	// TorusKnot
 
-	var option = new UI.Row();
-	option.setClass( 'option' );
-	option.setTextContent( 'TorusKnot' );
-	option.onClick( function () {
+	// var option = new UI.Row();
+	// option.setClass( 'option' );
+	// option.setTextContent( 'TorusKnot' );
+	// option.onClick( function () {
 
-		var geometry = new THREE.TorusKnotBufferGeometry( 1, 0.4, 64, 8, 2, 3 );
-		var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
-		mesh.name = 'TorusKnot';
+	// 	var geometry = new THREE.TorusKnotBufferGeometry( 1, 0.4, 64, 8, 2, 3 );
+	// 	var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+	// 	mesh.name = 'TorusKnot';
 
-		editor.execute( new AddObjectCommand( mesh ) );
+	// 	editor.execute( new AddObjectCommand( mesh ) );
 
-	} );
-	options.add( option );
+	// } );
+	// options.add( option );
 
 	/*
 	// Teapot
@@ -195,48 +195,48 @@ Menubar.Add = function ( editor ) {
 
 	// Lathe
 
-	var option = new UI.Row();
-	option.setClass( 'option' );
-	option.setTextContent( 'Lathe' );
-	option.onClick( function() {
+	// var option = new UI.Row();
+	// option.setClass( 'option' );
+	// option.setTextContent( 'Lathe' );
+	// option.onClick( function() {
 
-		var points = [
-			new THREE.Vector2( 0, 0 ),
-			new THREE.Vector2( 0.4, 0 ),
-			new THREE.Vector2( 0.35, 0.05 ),
-			new THREE.Vector2( 0.1, 0.075 ),
-			new THREE.Vector2( 0.08, 0.1 ),
-			new THREE.Vector2( 0.08, 0.4 ),
-			new THREE.Vector2( 0.1, 0.42 ),
-			new THREE.Vector2( 0.14, 0.48 ),
-			new THREE.Vector2( 0.2, 0.5 ),
-			new THREE.Vector2( 0.25, 0.54 ),
-			new THREE.Vector2( 0.3, 1.2 )
-		];
+	// 	var points = [
+	// 		new THREE.Vector2( 0, 0 ),
+	// 		new THREE.Vector2( 0.4, 0 ),
+	// 		new THREE.Vector2( 0.35, 0.05 ),
+	// 		new THREE.Vector2( 0.1, 0.075 ),
+	// 		new THREE.Vector2( 0.08, 0.1 ),
+	// 		new THREE.Vector2( 0.08, 0.4 ),
+	// 		new THREE.Vector2( 0.1, 0.42 ),
+	// 		new THREE.Vector2( 0.14, 0.48 ),
+	// 		new THREE.Vector2( 0.2, 0.5 ),
+	// 		new THREE.Vector2( 0.25, 0.54 ),
+	// 		new THREE.Vector2( 0.3, 1.2 )
+	// 	];
 
-		var geometry = new THREE.LatheBufferGeometry( points, 12, 0, Math.PI * 2 );
-		var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial( { side: THREE.DoubleSide } ) );
-		mesh.name = 'Lathe';
+	// 	var geometry = new THREE.LatheBufferGeometry( points, 12, 0, Math.PI * 2 );
+	// 	var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial( { side: THREE.DoubleSide } ) );
+	// 	mesh.name = 'Lathe';
 
-		editor.execute( new AddObjectCommand( mesh ) );
+	// 	editor.execute( new AddObjectCommand( mesh ) );
 
-	} );
-	options.add( option );
+	// } );
+	// options.add( option );
 
 	// Sprite
 
-	var option = new UI.Row();
-	option.setClass( 'option' );
-	option.setTextContent( 'Sprite' );
-	option.onClick( function () {
+	// var option = new UI.Row();
+	// option.setClass( 'option' );
+	// option.setTextContent( 'Sprite' );
+	// option.onClick( function () {
 
-		var sprite = new THREE.Sprite( new THREE.SpriteMaterial() );
-		sprite.name = 'Sprite';
+	// 	var sprite = new THREE.Sprite( new THREE.SpriteMaterial() );
+	// 	sprite.name = 'Sprite';
 
-		editor.execute( new AddObjectCommand( sprite ) );
+	// 	editor.execute( new AddObjectCommand( sprite ) );
 
-	} );
-	options.add( option );
+	// } );
+	// options.add( option );
 
 	//
 
@@ -346,22 +346,22 @@ Menubar.Add = function ( editor ) {
 
 	//
 
-	options.add( new UI.HorizontalRule() );
+	// options.add( new UI.HorizontalRule() );
 
 	// PerspectiveCamera
 
-	var option = new UI.Row();
-	option.setClass( 'option' );
-	option.setTextContent( 'PerspectiveCamera' );
-	option.onClick( function() {
+	// var option = new UI.Row();
+	// option.setClass( 'option' );
+	// option.setTextContent( 'PerspectiveCamera' );
+	// option.onClick( function() {
 
-		var camera = new THREE.PerspectiveCamera( 50, 1, 1, 10000 );
-		camera.name = 'PerspectiveCamera';
+	// 	var camera = new THREE.PerspectiveCamera( 50, 1, 1, 10000 );
+	// 	camera.name = 'PerspectiveCamera';
 
-		editor.execute( new AddObjectCommand( camera ) );
+	// 	editor.execute( new AddObjectCommand( camera ) );
 
-	} );
-	options.add( option );
+	// } );
+	// options.add( option );
 
 	return container;
 
