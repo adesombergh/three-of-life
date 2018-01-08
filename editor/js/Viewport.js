@@ -24,7 +24,7 @@ var Viewport = function ( editor ) {
 
 	// helpers
 
-	var grid = new THREE.GridHelper( 100, 100 );
+	var grid = new THREE.GridHelper( 10, 10 );
 	sceneHelpers.add( grid );
 
 	//
@@ -284,6 +284,9 @@ var Viewport = function ( editor ) {
 				sceneHelpers.remove( grid );
 				grid = new THREE.GridHelper( 60, 60, 0xbbbbbb, 0x888888 );
 				sceneHelpers.add( grid );
+				transformControls.setTranslationSnap( 1 );
+				transformControls.setRotationSnap( THREE.Math.degToRad( 45 ) );
+				transformControls.setSpace( 'local' );
 				break;
 
 		}
