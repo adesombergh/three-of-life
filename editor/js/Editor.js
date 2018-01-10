@@ -380,6 +380,15 @@ Editor.prototype = {
 
 			uuid = object.uuid;
 
+			if ( object.name === "the_floor" ||
+				 object.name === "the_point_light" ||
+				 object.name === "the_ambient_light"
+				 ){
+				object = null;
+				uuid = null;
+			}
+
+
 		}
 
 		this.selected = object;
