@@ -24,7 +24,7 @@ var Viewport = function ( editor ) {
 
 	// helpers
 
-	var grid = new THREE.GridHelper( 10, 10 );
+	var grid = new THREE.GridHelper( 400, 40 );
 	sceneHelpers.add( grid );
 
 	//
@@ -282,9 +282,9 @@ var Viewport = function ( editor ) {
 				break;
 			case 'css/dark.css':
 				sceneHelpers.remove( grid );
-				grid = new THREE.GridHelper( 60, 60, 0xbbbbbb, 0x888888 );
+				grid = new THREE.GridHelper( 400, 100, 0xbbbbbb, 0x888888 );
 				sceneHelpers.add( grid );
-				transformControls.setTranslationSnap( 1 );
+				transformControls.setTranslationSnap( 4 );
 				transformControls.setRotationSnap( THREE.Math.degToRad( 45 ) );
 				transformControls.setSpace( 'local' );
 				break;

@@ -39,8 +39,15 @@ Menubar.File = function ( editor ) {
 
 			editor.clear();
 
-			var geometry = new THREE.PlaneBufferGeometry( 100, 100, 1, 1 );
-			var material = new THREE.MeshStandardMaterial({color: 0x999999, side: THREE.DoubleSide} );
+			var geometry = new THREE.PlaneBufferGeometry( 400, 400, 1, 1 );
+			var material = new THREE.MeshStandardMaterial(
+				{
+					color: 0x999999,
+					side: THREE.DoubleSide,
+					roughness: .9,
+					metalness: .84
+				}
+			);
 			var mesh = new THREE.Mesh( geometry, material );
 			mesh.name = 'the_floor';
 			mesh.rotation.x = Math.PI / 2;
@@ -49,19 +56,19 @@ Menubar.File = function ( editor ) {
 
 
 
-			var color = 0x999999;
+			var color = 0xefebd8;
 			var light = new THREE.AmbientLight( color );
 			light.name = 'the_ambient_light';
-			light.position.y = 20;
-			light.intensity = 2;
-			light.castShadow = true;
+			light.position.y = 1000;
+			light.intensity = 1.5;
 			editor.execute( new AddObjectCommand( light ) );
 
 
-			var color = 0x999999;
+			var color = 0xffffff;
 			var light = new THREE.PointLight( color );
 			light.name = 'the_point_light';
-			light.position.set(65,33,0);
+			light.position.set(40,100,40);
+			light.intensity = 2.5;
 			light.castShadow = true;
 			editor.execute( new AddObjectCommand( light ) );
 

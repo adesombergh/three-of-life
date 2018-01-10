@@ -33,14 +33,14 @@ var Toolbar = function ( editor ) {
 	} );
 	buttons.add( rotate );
 
-	var scale = new UI.Button( 'scale' );
-	scale.dom.title = 'R';
-	scale.onClick( function () {
+	// var scale = new UI.Button( 'scale' );
+	// scale.dom.title = 'R';
+	// scale.onClick( function () {
 
-		signals.transformModeChanged.dispatch( 'scale' );
+	// 	signals.transformModeChanged.dispatch( 'scale' );
 
-	} );
-	buttons.add( scale );
+	// } );
+	// buttons.add( scale );
 
 	signals.transformModeChanged.add( function ( mode ) {
 

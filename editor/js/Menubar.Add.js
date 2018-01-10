@@ -16,6 +16,20 @@ Menubar.Add = function ( editor ) {
 	options.setClass( 'options' );
 	container.add( options );
 
+
+	var meshCount = 0;
+	var lightCount = 0;
+	var cameraCount = 0;
+
+	editor.signals.editorCleared.add( function () {
+
+		meshCount = 0;
+		lightCount = 0;
+		cameraCount = 0;
+
+	} );
+
+
 	// Group
 
 	var option = new UI.Row();
@@ -34,6 +48,40 @@ Menubar.Add = function ( editor ) {
 	//
 
 	options.add( new UI.HorizontalRule() );
+
+
+	// MODs
+
+	var option = new UI.Row();
+	option.setClass( 'option' );
+	option.setTextContent( 'MODs' );
+	option.onClick( function () {
+		// instantiate a loader
+		var loader = new THREE.ObjectLoader();
+
+		// load a resource
+		loader.load(
+			// resource URL
+			'/MODs.json',
+
+			function ( obj ) {
+				console.log(meshCount);
+				obj.name += ' ' + (  ++ meshCount );
+				editor.execute( new AddObjectCommand( obj ) );
+			},
+			// onProgress callback
+			function ( xhr ) {
+				// console.log();
+			},
+			// onError callback
+			function( err ) {
+				console.log( 'An error happened' );
+			}
+		);
+
+
+	});
+	options.add( option );
 
 	// Plane
 
