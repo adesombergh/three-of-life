@@ -62,7 +62,7 @@ Menubar.Add = function ( editor ) {
 		// load a resource
 		loader.load(
 			// resource URL
-			'/MODs.json',
+			'../MODs.json',
 
 			function ( obj ) {
 				console.log(meshCount);
