@@ -72,6 +72,24 @@ Menubar.File = function ( editor ) {
 			light.castShadow = true;
 			editor.execute( new AddObjectCommand( light ) );
 
+			// Lady
+
+			// instantiate a loader
+			var loader = new THREE.ObjectLoader();
+			// load a resource
+			loader.load(
+				'../the_lady.json',
+				function ( obj ) {
+					obj.name  = "the_lady";
+					editor.execute( new AddObjectCommand( obj ) );
+				},
+				function ( xhr ) { // onProgress callback
+				},
+				function( err ) { // onError callback
+					console.log( 'An error happened' );
+				}
+			);
+
 
 		}
 
