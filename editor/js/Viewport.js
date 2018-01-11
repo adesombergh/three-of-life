@@ -284,7 +284,7 @@ var Viewport = function ( editor ) {
 				sceneHelpers.remove( grid );
 				grid = new THREE.GridHelper( 400, 100, 0xbbbbbb, 0x888888 );
 				sceneHelpers.add( grid );
-				transformControls.setTranslationSnap( 4 );
+				transformControls.setTranslationSnap( 2 );
 				transformControls.setRotationSnap( THREE.Math.degToRad( 45 ) );
 				transformControls.setSpace( 'local' );
 				break;
