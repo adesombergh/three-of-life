@@ -520,12 +520,12 @@ var Viewport = function ( editor ) {
 
 	} );
 
-	signals.showGridChanged.add( function ( showGrid ) {
+	// signals.showGridChanged.add( function ( showGrid ) {
 
-		grid.visible = showGrid;
-		render();
+	// 	grid.visible = showGrid;
+	// 	render();
 
-	} );
+	// } );
 
 	//
 
