@@ -191,6 +191,11 @@ Sidebar.Scene = function ( editor ) {
 
 				var object = objects[ i ];
 
+				if ( object.name === "the_floor" ||
+				 object.name === "the_point_light" ||
+				 object.name === "the_ambient_light"
+				 ) continue;
+					
 				var option = buildOption( object, true );
 				option.style.paddingLeft = ( pad * 10 ) + 'px';
 				options.push( option );
