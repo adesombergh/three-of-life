@@ -4,11 +4,101 @@
 		<title>three.js / editor</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" href="css/reset.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
+		<style>
+		body {
+			font-family: 'Montserrat', sans-serif;
+		}
+		#viewport, canvas {
+			position: absolute;
+			left: 0; right: 0;
+			top: 0; bottom: 0;
+		}
+		</style>
+		<link rel="stylesheet" href="css/menus.css">
 	</head>
 	<body ontouchstart="">
-		<link href="css/main.css" rel="stylesheet" />
-		<link id="theme" href="css/light.css" rel="stylesheet" />
+		<div class="left-menu">
+			<div class="menu-tab">
+				<div class="tab-title">MODs</div>
+				<div class="tab-icon"><button class="hideMenu" data-toggle=".left-menu">+</button></div>
+			</div>
+			<div class="menu-content">
+				<div class="submenu">
+					<p class="menu-title">Surface</p>
+					<a href="#" class="menu-item">Empty</a>
+					<a href="#" class="menu-item">Floor</a>
+					<a href="#" class="menu-item">Walls</a>
+				</div>
+				<div class="submenu">
+					<p class="menu-title">add</p>
+					<a href="#" class="menu-item" id="addMod">MOD</a>
+					<a href="#" class="menu-item">Preset</a>
+					<a href="#" class="menu-item">My Presets</a>
+				</div>
+				<div class="submenu">
+					<p class="menu-title">Assets</p>
+					<a href="#" class="menu-item">Covering</a>
+					<a href="#" class="menu-item">Props</a>
+					<a href="#" class="menu-item">Images</a>
+					<a href="#" class="menu-item">Lights</a>
+				</div>
+				<a href="#" class="badass-button">Save</a>
+			</div>
+		</div>
 
+		<div class="right-menu">
+			<div class="menu-tab">
+				<div class="tab-icon"><button class="hideMenu" data-toggle=".right-menu">+</button></div>
+				<div class="tab-title">Tools</div>
+			</div>
+			<div class="menu-content">
+				<div class="submenu">
+					<p class="menu-title">Objects</p>
+					<div class="overflower">
+						<ul id="objects">
+							
+						</ul>
+					</div>
+				</div>
+				<div class="submenu">
+					<p class="menu-title">History</p>
+					<div class="overflower">
+						<ul id="history">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="toolbar">
+			<div class="toolbar-item">
+				<label>
+					<input type="checkbox">
+					Select Many
+				</label>
+			</div>
+			<div class="toolbar-separator"></div>
+			<div class="toolbar-item">
+				<a href="#" id="move" class="hide">Translate</a>
+				<a href="#" id="rotate">Rotate</a>
+			</div>
+			<div class="toolbar-item">
+				<a href="#" id="delete">Delete</a>
+			</div>
+			<div class="toolbar-item">
+				<a href="#" id="clone">Clone</a>
+			</div>
+			<div class="toolbar-item">
+				<a href="#">Group</a>
+			</div>
+			<div class="toolbar-separator"></div>
+			<div class="toolbar-item">
+				<a href="#">Color</a>
+			</div>
+		</div>
+	
 		<script src="../build/three.js"></script>
 		<script src="../examples/js/libs/system.min.js"></script>
 
@@ -104,6 +194,7 @@
 		<script src="js/Menubar.Status.js"></script>
 		<script src="js/Sidebar.js"></script>
 		<script src="js/Sidebar.Scene.js"></script>
+		<script src="js/anarscene.js"></script>
 		<script src="js/Sidebar.Project.js"></script>
 		<script src="js/Sidebar.Settings.js"></script>
 		<script src="js/Sidebar.Settings.Shortcuts.js"></script>
@@ -128,6 +219,7 @@
 		<script src="js/Sidebar.Animation.js"></script>
 		<script src="js/Sidebar.Script.js"></script>
 		<script src="js/Sidebar.History.js"></script>
+		<script src="js/anarhistory.js"></script>
 		<script src="js/Toolbar.js"></script>
 		<script src="js/Viewport.js"></script>
 		<script src="js/Viewport.Info.js"></script>
@@ -154,7 +246,6 @@
 		<script src="js/commands/SetMaterialMapCommand.js"></script>
 		<script src="js/commands/SetSceneCommand.js"></script>
 
-		<!-- <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="qyqgfqd9j8z890t"></script> -->
 
 		<script src="js/libs/html2canvas.js"></script>
 		<script src="js/libs/three.html.js"></script>
@@ -168,85 +259,44 @@
 				return this.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 			};
 
-			//
-
 			var editor = new Editor();
-
 			var viewport = new Viewport( editor );
 			document.body.appendChild( viewport.dom );
 
-			var script = new Script( editor );
-			document.body.appendChild( script.dom );
-
-			var player = new Player( editor );
-			document.body.appendChild( player.dom );
-
-			var toolbar = new Toolbar( editor );
-			document.body.appendChild( toolbar.dom );
-
-			var menubar = new Menubar( editor );
-			document.body.appendChild( menubar.dom );
-
 			var sidebar = new Sidebar( editor );
-			document.body.appendChild( sidebar.dom );
+			// document.body.appendChild( sidebar.dom );
+			new AnarHistory( editor );
+			new AnarScene( editor );
 
-			var modal = new UI.Modal();
-			document.body.appendChild( modal.dom );
-
-			//
 
 			editor.setTheme( editor.config.getKey( 'theme' ) );
 
 			editor.storage.init( function () {
-
 				editor.storage.get( function ( state ) {
-
-					if ( isLoadingFromHash ) return;
-
 					if ( state !== undefined ) {
-
 						editor.fromJSON( state );
-
 					}
-
 					var selected = editor.config.getKey( 'selected' );
-
 					if ( selected !== undefined ) {
-
 						editor.selectByUuid( selected );
-
 					}
-
 				} );
-
-				//
-
 				var timeout;
 
 				function saveState( scene ) {
-
 					if ( editor.config.getKey( 'autosave' ) === false ) {
-
 						return;
-
 					}
 
 					clearTimeout( timeout );
 
 					timeout = setTimeout( function () {
-
 						editor.signals.savingStarted.dispatch();
-
 						timeout = setTimeout( function () {
-
 							editor.storage.set( editor.toJSON() );
-
 							editor.signals.savingFinished.dispatch();
-
 						}, 100 );
-
 					}, 1000 );
-
 				};
 
 				var signals = editor.signals;
@@ -270,72 +320,19 @@
 
 			} );
 
-			//
 
-			document.addEventListener( 'dragover', function ( event ) {
-
-				event.preventDefault();
-				event.dataTransfer.dropEffect = 'copy';
-
-			}, false );
-
-			document.addEventListener( 'drop', function ( event ) {
-
-				event.preventDefault();
-
-				if ( event.dataTransfer.files.length > 0 ) {
-
-					editor.loader.loadFile( event.dataTransfer.files[ 0 ] );
-
-				}
-
-			}, false );
 
 			function onWindowResize( event ) {
-
 				editor.signals.windowResize.dispatch();
-
 			}
 
 			window.addEventListener( 'resize', onWindowResize, false );
-
-			onWindowResize();
-
-			//
-
-			var isLoadingFromHash = false;
-			var hash = window.location.hash;
-
-			if ( hash.substr( 1, 5 ) === 'file=' ) {
-
-				var file = hash.substr( 6 );
-
-				if ( confirm( 'Any unsaved data will be lost. Are you sure?' ) ) {
-
-					var loader = new THREE.FileLoader();
-					loader.crossOrigin = '';
-					loader.load( file, function ( text ) {
-
-						editor.clear();
-						editor.fromJSON( JSON.parse( text ) );
-
-					} );
-
-					isLoadingFromHash = true;
-
-				}
-
-			}
-
-			/*
-			window.addEventListener( 'message', function ( event ) {
-
-				editor.clear();
-				editor.fromJSON( event.data );
-
-			}, false );
-			*/
-
+			
+			setTimeout(function(){
+				editor.signals.windowResize.dispatch();
+			},100);
 		</script>
+		<script src="deba.js"></script>
+
 	</body>
 </html>

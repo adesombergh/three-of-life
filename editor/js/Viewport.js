@@ -123,12 +123,10 @@ var Viewport = function ( editor ) {
 	sceneHelpers.add( transformControls );
 
 	// object picking
-
 	var raycaster = new THREE.Raycaster();
 	var mouse = new THREE.Vector2();
 
 	// events
-
 	function getIntersects( point, objects ) {
 
 		mouse.set( ( point.x * 2 ) - 1, - ( point.y * 2 ) + 1 );
@@ -271,26 +269,15 @@ var Viewport = function ( editor ) {
 
 	} );
 
-	signals.themeChanged.add( function ( value ) {
+	signals.themeChanged.add( function (  ) {
 
-		switch ( value ) {
-
-			case 'css/light.css':
-				sceneHelpers.remove( grid );
-				grid = new THREE.GridHelper( 60, 60, 0x444444, 0x888888 );
-				sceneHelpers.add( grid );
-				break;
-			case 'css/dark.css':
-				sceneHelpers.remove( grid );
-				grid = new THREE.GridHelper( 400, 100, 0xbbbbbb, 0x888888 );
-				sceneHelpers.add( grid );
-				transformControls.setTranslationSnap( 2 );
-				transformControls.setRotationSnap( THREE.Math.degToRad( 45 ) );
-				transformControls.setSpace( 'local' );
-				break;
-
-		}
-
+		sceneHelpers.remove( grid );
+		grid = new THREE.GridHelper( 400, 100, 0xbbbbbb, 0x888888 );
+		sceneHelpers.add( grid );
+		transformControls.setTranslationSnap( 2 );
+		transformControls.setRotationSnap( THREE.Math.degToRad( 45 ) );
+		transformControls.setSpace( 'local' );
+		
 		render();
 
 	} );
